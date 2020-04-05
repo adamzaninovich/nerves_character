@@ -1,18 +1,6 @@
 defmodule NervesCharacter do
   @moduledoc """
-  Documentation for NervesCharacter.
+  NervesCharacter is a Nerves application that generates random D&D characters
+  and displays them on a lcd touchscreen using Scenic
   """
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> NervesCharacter.hello
-      :world
-
-  """
-  def hello do
-    :world
-  end
 end
