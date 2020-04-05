@@ -1,21 +1,32 @@
 defmodule NervesCharacter.CharacterGenerator do
   @moduledoc """
   Module for generating random D&D characters
+
+  Using data from from whothefuckismydndcharacter.com
   """
 
-  @doc "Generates a random heading"
+  @doc """
+  Generates a random heading
+  """
+  @spec heading() :: String.t()
   def heading, do: get(:heading)
 
-  @doc "Generates a random character"
-  def character do
+  @doc """
+  Generates a random character
+  """
+  @spec body() :: String.t()
+  def body do
     """
-    #{String.capitalize(get(:adjective))} #{get(:race)} #{get(:class)}
+    #{get(:adjective)} #{get(:race)} #{get(:class)}
     from #{get(:location)}
     who #{get(:backstory)}
     """
   end
 
-  @doc "Generates a random response"
+  @doc """
+  Generates a random response
+  """
+  @spec response() :: String.t()
   def response, do: get(:response)
 
   defp get(type) do
