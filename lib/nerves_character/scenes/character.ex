@@ -8,9 +8,20 @@ defmodule NervesCharacter.Scene.Character do
   import Scenic.Components
 
   @center 400
-  @button_width 400
+  @button_width 700
   @button_left @center - @button_width / 2
   @fucks_on_by_default false
+
+  @toggle_theme %{
+    text: {164, 54, 51},
+    border: {164, 54, 51},
+    # :light_coral,
+    thumb: :black,
+    # :light_coral,
+    focus: :black,
+    background: :black,
+    active: {164, 54, 51}
+  }
 
   @graph Graph.build(font_size: 32, font: :roboto)
          |> group(
@@ -24,8 +35,8 @@ defmodule NervesCharacter.Scene.Character do
          )
          |> group(
            &button(&1, "response",
-             button_font_size: 24,
-             theme: :danger,
+             button_font_size: 32,
+             theme: @toggle_theme,
              id: :response,
              width: @button_width
            ),
@@ -34,10 +45,14 @@ defmodule NervesCharacter.Scene.Character do
          |> group(
            fn graph ->
              graph
-             |> text("fuck?", id: :fuck_text)
-             |> toggle(@fucks_on_by_default, id: :fuck, t: {55, -8})
+             |> text("fucks?", id: :fuck_text, hidden: not @fucks_on_by_default)
+             |> toggle(@fucks_on_by_default,
+               id: :fuck,
+               theme: @toggle_theme,
+               translate: {66, -8}
+             )
            end,
-           translate: {720, 470},
+           translate: {712, 470},
            font_size: 24,
            scale: 0.75
          )
@@ -66,11 +81,9 @@ defmodule NervesCharacter.Scene.Character do
   end
 
   def filter_event({:value_changed, :fuck, fucks}, _pid, state) do
-    fuck_text = if fucks, do: "fuck?", else: "****?"
-
     graph =
       state.graph
-      |> Graph.modify(:fuck_text, &text(&1, fuck_text))
+      |> Graph.modify(:fuck_text, &update_opts(&1, hidden: not fucks))
       |> update_graph(fucks, state.character)
 
     {:noreply, %{state | fucks: fucks, graph: graph}, push: graph}
