@@ -1,10 +1,10 @@
 import Config
 
-config :hello_nerves, :viewport, %{
+config :nerves_character, :viewport, %{
   name: :main_viewport,
-  # default_scene: {HelloNerves.Scene.Crosshair, nil},
-  # default_scene: {HelloNerves.Scene.SysInfo, nil},
-  default_scene: {HelloNerves.Scene.Character, nil},
+  # default_scene: {NervesCharacter.Scene.Crosshair, nil},
+  # default_scene: {NervesCharacter.Scene.SysInfo, nil},
+  default_scene: {NervesCharacter.Scene.Character, nil},
   size: {800, 480},
   opts: [scale: 1.0],
   drivers: [

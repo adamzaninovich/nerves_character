@@ -1,8 +1,8 @@
-defmodule HelloNerves.Character do
+defmodule NervesCharacter.Character do
   @moduledoc """
   A struct for storing character data
   """
-  alias HelloNerves.{
+  alias NervesCharacter.{
     Character,
     CharacterGenerator
   }

@@ -1,4 +1,4 @@
-defmodule HelloNerves.Application do
+defmodule NervesCharacter.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
@@ -9,13 +9,13 @@ defmodule HelloNerves.Application do
   def start(_type, _args) do
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: HelloNerves.Supervisor]
+    opts = [strategy: :one_for_one, name: NervesCharacter.Supervisor]
 
     children =
       [
         # Children for all targets
-        # Starts a worker by calling: HelloNerves.Worker.start_link(arg)
-        # {HelloNerves.Worker, arg},
+        # Starts a worker by calling: NervesCharacter.Worker.start_link(arg)
+        # {NervesCharacter.Worker, arg},
       ] ++ children(target())
 
     if target() != :host and should_start_wizard?() do
@@ -38,7 +38,7 @@ defmodule HelloNerves.Application do
 
   # List all child processes to be supervised
   def children(:host) do
-    main_viewport_config = Application.get_env(:hello_nerves, :viewport)
+    main_viewport_config = Application.get_env(:nerves_character, :viewport)
 
     [
       {Scenic, viewports: [main_viewport_config]}
@@ -46,7 +46,7 @@ defmodule HelloNerves.Application do
   end
 
   def children(_target) do
-    main_viewport_config = Application.get_env(:hello_nerves, :viewport)
+    main_viewport_config = Application.get_env(:nerves_character, :viewport)
 
     [
       {Scenic, viewports: [main_viewport_config]}
@@ -54,6 +54,6 @@ defmodule HelloNerves.Application do
   end
 
   def target() do
-    Application.get_env(:hello_nerves, :target)
+    Application.get_env(:nerves_character, :target)
   end
 end

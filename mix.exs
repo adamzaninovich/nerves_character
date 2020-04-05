@@ -1,7 +1,7 @@
-defmodule HelloNerves.MixProject do
+defmodule NervesCharacter.MixProject do
   use Mix.Project
 
-  @app :hello_nerves
+  @app :nerves_character
   @version "0.1.0"
   @all_targets [:rpi, :rpi0, :rpi2, :rpi3, :rpi3a, :rpi4, :bbb, :x86_64]
 
@@ -30,7 +30,7 @@ defmodule HelloNerves.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      mod: {HelloNerves.Application, []},
+      mod: {NervesCharacter.Application, []},
       extra_applications: [:logger, :runtime_tools, :inets]
     ]
   end
@@ -64,7 +64,7 @@ defmodule HelloNerves.MixProject do
       {:nerves_system_rpi3a, "~> 1.11", runtime: false, targets: :rpi3a},
       {:nerves_system_rpi4, "~> 1.11", runtime: false, targets: :rpi4},
       {:nerves_system_bbb, "~> 2.6", runtime: false, targets: :bbb},
-      {:nerves_system_x86_64, "~> 1.11", runtime: false, targets: :x86_64},
+      {:nerves_system_x86_64, "~> 1.11", runtime: false, targets: :x86_64}
     ]
   end
 

@@ -5,7 +5,7 @@
 # is restricted to this project.
 import Config
 
-config :hello_nerves, target: Mix.target()
+config :nerves_character, target: Mix.target()
 
 # Customize non-Elixir parts of the firmware. See
 # https://hexdocs.pm/nerves/advanced-configuration.html for details.

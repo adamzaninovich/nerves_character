@@ -1,4 +1,4 @@
-defmodule HelloNerves.CharacterGenerator do
+defmodule NervesCharacter.CharacterGenerator do
   @moduledoc """
   Module for generating random D&D characters
   """

@@ -1,8 +1,8 @@
-defmodule HelloNerves.Scene.Character do
+defmodule NervesCharacter.Scene.Character do
   use Scenic.Scene
 
   alias Scenic.Graph
-  alias HelloNerves.Character
+  alias NervesCharacter.Character
 
   import Scenic.Primitives
   import Scenic.Components
